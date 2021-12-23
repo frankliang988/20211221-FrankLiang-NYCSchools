@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">20211221-FrankLiang-NYCSchools</string>
+
+    <string name="unknown">UNKNOWN</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_schools">Schools</string>
+    <string name="title_home">Home</string>
+
+    <string name="trans_name">trans_name%d</string>
+    <string name="trans_saved">trans_saved%d</string>
+    <string name="trans_location">trans_location%d</string>
+
+    <string name="boro_queens">QUEENS</string>
+    <string name="boro_manhattan">MANHATTAN</string>
+    <string name="boro_bronx">BRONX</string>
+    <string name="boro_staten_island">STATEN ISLAND</string>
+    <string name="boro_brooklyn">BROOKLYN</string>
+
+    <string name="school_phone">Phone: %s</string>
+    <string name="school_fax">Fax: %s</string>
+    <string name="school_email">Email: %s</string>
+    <string name="school_link">Web site: %s</string>
+
+
+    <string name="school_sat_mat_na">SAT Math Average: Not available</string>
+    <string name="school_sat_mat">SAT Math Average: %d</string>
+
+    <string name="school_sat_reading_na">SAT Reading Average: Not available</string>
+    <string name="school_sat_reading">SAT Reading Average: %d</string>
+
+    <string name="school_sat_writing_na">SAT Writing Average: Not available</string>
+    <string name="school_sat_writing">SAT Writing Average: %d</string>
+
+    <string name="school_rate_graduation_na">Graduation rate: Not available</string>
+    <string name="school_rate_graduation">Graduation rate: %s</string>
+
+    <string name="school_students_na">Total students: Not available</string>
+    <string name="school_students">Total students: %d</string>
+
+</resources>

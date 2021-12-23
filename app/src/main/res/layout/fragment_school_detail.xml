@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.frankliang.a20211221_frankliang_nycschools.ui.MainViewModel" />
+        <variable
+            name="onSaveListener"
+            type="com.frankliang.a20211221_frankliang_nycschools.ui.fragments.OnSchoolSaveToggle" />
+        <import type="android.view.View"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_no_network"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seems like there is some problem with the internet. Please try again later"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:padding="8dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/gray_light"
+                app:visibleIf="@{!viewModel.fetchInfoSuccess}"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/name_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_no_network"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.schoolSelected.name}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_saved" />
+
+                <ImageView
+                    android:id="@+id/iv_saved"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:showIsSaved="@{viewModel.schoolSelected}"
+                    android:onClick="@{() -> onSaveListener.onToggleSave(viewModel.schoolSelected)}"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:autoLink="map"
+                android:paddingHorizontal="20dp"
+                app:visibleIfText="@{viewModel.schoolSelected.location}"
+                android:text="@{viewModel.schoolSelected.location}"
+                android:layout_below="@id/name_section" />
+
+            <com.borjabravo.readmoretextview.ReadMoreTextView
+                android:id="@+id/tv_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_location"
+                android:layout_marginTop="12dp"
+                android:textSize="14sp"
+                android:paddingHorizontal="20dp"
+                android:text="@{viewModel.schoolSelected.overView}"
+                app:visibleIfText="@{viewModel.schoolSelected.overView}"
+                app:colorClickableText="@color/core_blue"
+                app:trimLines="3"
+                app:trimMode="trimModeLine" />
+
+            <View
+                android:id="@+id/divider_1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider"
+                app:visibleIfText="@{viewModel.schoolSelected.overView}"
+                android:layout_below="@id/tv_overview" />
+
+            <TextView
+                android:id="@+id/tv_sat_math"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_overview"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:paddingHorizontal="20dp"
+                app:setMathSat="@{viewModel.schoolSelected}"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/tv_sat_reading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_sat_math"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:paddingHorizontal="20dp"
+                app:setReadingSat="@{viewModel.schoolSelected}"
+                />
+
+            <TextView
+                android:id="@+id/tv_sat_writing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_sat_reading"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:paddingHorizontal="20dp"
+                app:setWritingSat="@{viewModel.schoolSelected}"
+                />
+
+            <TextView
+                android:id="@+id/tv_student_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_sat_writing"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:paddingHorizontal="20dp"
+                app:setTotalStudent="@{viewModel.schoolSelected}" />
+
+            <TextView
+                android:id="@+id/tv_graduation_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_student_count"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:paddingHorizontal="20dp"
+                app:setGradRate="@{viewModel.schoolSelected}"
+                />
+
+            <View
+                android:id="@+id/divider_2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/divider"
+                android:layout_below="@id/tv_graduation_rate" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_2"
+                android:layout_marginTop="12dp"
+                android:textStyle="italic"
+                android:autoLink="phone"
+                android:paddingHorizontal="20dp"
+                app:visibleIfText="@{viewModel.schoolSelected.phone}"
+                android:text= "@{@string/school_phone(viewModel.schoolSelected.phone)}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_fax"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_phone"
+                android:textStyle="italic"
+                android:autoLink="phone"
+                android:paddingHorizontal="20dp"
+                app:visibleIfText="@{viewModel.schoolSelected.fax}"
+                android:text= "@{@string/school_fax(viewModel.schoolSelected.fax)}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_fax"
+                android:textStyle="italic"
+                android:autoLink="email"
+                android:paddingHorizontal="20dp"
+                app:visibleIfText="@{viewModel.schoolSelected.email}"
+                android:text= "@{@string/school_email(viewModel.schoolSelected.email)}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_web"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_email"
+                android:textStyle="italic"
+                android:autoLink="web"
+                android:paddingHorizontal="20dp"
+                app:visibleIfText="@{viewModel.schoolSelected.link}"
+                android:text="@{@string/school_link(viewModel.schoolSelected.link)}"
+                android:layout_marginBottom="20dp"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

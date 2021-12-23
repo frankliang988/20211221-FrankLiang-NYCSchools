@@ -1,0 +1,26 @@
+General description:
+1) The app fetches the list of schools on start up, just the dbn, school name, and borough info.
+Reason: there is only 440ish schools, the data rarely changes, so it makes sense to save it in local
+db instead of fetching it from server everytime.
+
+2) User can browse schools or view saved schools
+3) Clicking start icon in the schools list or school detail page will save the school
+
+Stuff to improve:
+
+    Main fragment
+    1) Upon successfully loading school data, save the timestamp in datastore. Everytime on app startup,
+    check if x amount of time has passed, if so, re-fetch data again.
+
+    School List fragment:
+    1) Add search/filter function that allows user to search for school name and filter by boroughs
+    2) If failed to fetch schools on app start, show network error info and give user a retry button
+
+    School detail fragment:
+    1) Code the ReadMoreTextView from scratch instead of using 3rd party library, it is not working well right now.
+    2) Make the shared element transition better
+    3) Handle net work error with better ui and logic
+
+    General
+    1) Add unit testing
+    2) Add actual dependency injection
