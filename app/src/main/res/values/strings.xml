@@ -10,11 +10,11 @@
     <string name="trans_saved">trans_saved%d</string>
     <string name="trans_location">trans_location%d</string>
 
-    <string name="boro_queens">QUEENS</string>
-    <string name="boro_manhattan">MANHATTAN</string>
-    <string name="boro_bronx">BRONX</string>
-    <string name="boro_staten_island">STATEN ISLAND</string>
-    <string name="boro_brooklyn">BROOKLYN</string>
+    <string name="borough_queens">QUEENS</string>
+    <string name="borough_manhattan">MANHATTAN</string>
+    <string name="borough_bronx">BRONX</string>
+    <string name="borough_staten_island">STATEN ISLAND</string>
+    <string name="borough_brooklyn">BROOKLYN</string>
 
     <string name="school_phone">Phone: %s</string>
     <string name="school_fax">Fax: %s</string>
