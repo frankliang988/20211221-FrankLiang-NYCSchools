@@ -12,6 +12,7 @@ import retrofit2.Response
 object NetworkRepository {
 
     suspend fun getAndSaveSchoolList(context: Context) {
+        val x = 6
         val dataStoreManager = ServiceLocator.getInstance(context).datastoreManager
         val schoolListResponseList = getSchoolList()
         if (schoolListResponseList.isSuccessful && schoolListResponseList.body().orEmpty()
